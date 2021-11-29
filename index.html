@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>서울도서관</title>
+    <link rel="stylesheet" type="text/css" href="http://kenwheeler.github.io/slick/slick/slick.css" />
+    <link rel="stylesheet" type="text/css" href="http://kenwheeler.github.io/slick/slick/slick-theme.css" />
+    
+    <style>
+        *{margin: 0; padding: 0;}
+        a{text-decoration: none; color: #333;}
+        li{list-style-type: none;}
+        body{font-family: 'Noto Sans KR', sans-serif; color: #333;}
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+        
+        .contLayout::after{
+            content: '';
+            clear: both;
+            display: block;
+        }
+
+        #wrap{
+            width: 100%;
+        }
+
+        header{
+            width: 100%;
+            position: relative;
+        }
+
+        .wrapLayout::after{
+            content: '';
+            clear: both;
+            display: block;
+        }
+
+        .contLayout{
+            width: 1200px;
+            margin: auto;
+        }
+
+        .logo{
+            width: 120px;
+            height: 80px;
+            background: url(./imges/logo.png) no-repeat;
+            background-size: contain;
+            background-position: center;
+            font-size: 0px;
+            float: left;
+            margin-top: 10px;
+        }
+
+        nav{
+            width: 88%;
+            float: left;
+        }
+
+        .lnb>li{
+            float: left;
+            margin: 29px 0px 0px 0px;
+            width: 163px;
+        }
+
+        .lnb>li>a{
+            display: block;
+            font-size: 20px;
+            text-align: center;
+            font-weight: bold;
+            letter-spacing: -0.84px;
+            padding: 20px 0px;
+        }
+
+        .gnb li{
+            float: left;
+            width: 80px;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .gnb li a{
+            font-size: 15px;
+        }
+
+        .subM{
+            position: absolute;
+            z-index: 2;
+            display: none;
+            top: 85px;
+        }
+
+        .subM>li{
+            padding: 7px 0px;
+            width: 163px;
+        }
+
+        .subM>li:first-of-type{
+            padding-top: 30px;
+        }
+
+
+        .subM>li a{
+            font-size: 18px;
+            display: block;
+            font-weight: normal;
+            text-align: center;
+            letter-spacing: -0.84px;
+            color: white;
+        }
+        
+        .navBg{
+            width: 1200px;
+            height: 267px;
+            background-color: #647790;
+            position: absolute;
+            top: 98px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: none;
+            z-index: 1;
+        }
+
+/* slideImg */
+        .slideImg{
+           width: 100%;
+           height: 600px;
+           overflow: hidden;
+        }
+
+        .slideImg li{
+            width: 1920px;
+            margin: auto;
+        }
+
+/* shortcuts */
+        .shortcutsWrap{
+            width: 100%;
+            border-top: 2px solid #ccc;
+            border-bottom: 2px solid #ccc;
+            margin: 100px 0px;
+        }
+
+        .shortcuts{
+            width: 100%;
+            margin: auto;
+            padding: 50px 0px;
+            display: table;
+            table-layout: fixed;
+        }
+
+        .shortcuts li{
+            display: table-cell;
+            vertical-align: middle;
+            padding: 0px 13px;
+            cursor: pointer;
+        }
+
+        .shortcuts li::after{
+            content: '';
+            clear: both;
+            display: block;
+        }
+
+        .shortcuts li img{
+            float: left;
+            cursor: pointer;
+        }
+
+        .shortcuts li b,
+        .shortcuts li p{
+            float: left;
+            font-size: 19px;
+            font-weight: bold;
+            margin: 13px 0px 0px 15px;
+        }
+
+        .shortcuts li p{
+            float: left;
+            font-size: 16px;
+            margin: 5px 0px 0px 15px;
+            padding-right: 0px;
+            font-weight: normal;
+            line-height: 130%;
+            color: #969696;
+            letter-spacing: -0.8px;
+        }
+
+/* notice */
+        .notice{
+            width: 100%;
+            position: relative;
+            background-color: red;
+        }
+
+        .notice_left,
+        .notice_right{
+            width: 50%;
+            background-color: #647790;
+            float: left;
+            padding: 30px 0px;
+            color: white;
+            position: relative;
+            z-index: 4;
+        }
+
+        .notice_right{
+            background-color: #99d3cd;
+        }
+
+
+        .notice_left b,
+        .notice_right b{
+            float: left;
+            text-align: center;
+            font-size: 17px;
+            margin: 0px 50px;
+        }
+
+        .notice_left ul,
+        .notice_right ul{
+            float: left;
+            width: 60%;
+            height: 25px;
+            overflow: hidden;
+        }
+
+        .notice_right ul{
+            width: 50%;
+        }
+
+        .notice ul li{
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap
+        }
+
+        .notice_left div::after,
+        .notice_right div::after,
+        .notice::after{
+            content: '';
+            clear: both;
+            display: block;
+        }
+
+        .notice ul li a{
+            color: white;
+        }
+
+        .notice_more{
+            position: absolute;
+        }
+
+        .notice_more::after{
+            content: '+';
+            font-size: 30px;
+            position: relative;
+            top: -11px;
+            left: 20px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+/* bookRanking */
+        .bookRanking{
+            padding: 10px;
+        }
+
+        .bookRanking input{
+            display: none;
+        }
+
+        .bookRanking label{
+            cursor: pointer;
+            padding: 10px 15px;
+            text-align: center;
+            margin: auto;
+            display: inline-block;
+            font-size: 20px;
+            font-weight: 500;
+            transition: 0.5s;
+            color: #ccc;
+        }
+
+        .bookRanking #newbook:checked ~ .newbook::after,
+        .bookRanking #loanbook:checked ~ .loanbook::after{
+            content: '';
+            width: 150px;
+            height: 25px;
+            background-color: #647790;
+            opacity: 0.5;
+            border-radius: 10px;
+            position: absolute;
+            z-index: -1;
+            left: 0px;
+            top: 25px;
+        }
+
+        @keyframes booklabel{
+            0%{
+                position: relative;
+                top: 0px;
+            }
+
+            100%{
+                position: relative;
+                top: -25px;
+            }
+        }
+
+        .bookRanking label:first-of-type{
+            margin-left: 38%;
+        }
+
+        .newBookCont,
+        .loanBookCont{
+            width: 80%;
+            display: none;
+            margin: 50px auto 0px;
+        }
+
+        .bookRanking input:first-of-type:checked ~ .newBookCont,
+        .bookRanking input:last-of-type:checked ~ .loanBookCont{
+            display: block;
+        }
+
+        .bookRanking #newbook:checked ~ .newbook,
+        .bookRanking #loanbook:checked ~ .loanbook{
+            animation: booklabel 0.5s;
+            position: relative;
+            top: -25px;
+            color: #333;
+        }
+        
+/* 슬라이더 */
+        .regular div img{
+            margin: auto;
+            width: 170px;
+        }
+
+        .bookRanking .slick-dots{
+            position: relative;
+            top: 30px;
+        }
+
+        .bookRanking .slick-dots li{
+            width: 25px;
+            height: 12px;
+            margin: 0px 7px;
+            border-radius: 10px;
+            background-color: #647790;
+        }
+
+        .bookRanking .slick-dots li:hover{
+            background-color: #485a72;
+        }
+
+        .bookRanking .slick-dots .slick-active{
+            background-color: #647790;
+            width: 35px;
+        }
+
+        .bookRanking .slick-dots li button{
+            display: none;
+        }
+
+        .bookRanking .slick-dots li button:before{
+            font-size: 0px;
+        }
+
+        .slick-prev:before,
+        .slick-next:before{
+            content: ' ';
+            width: 70px;
+            height: 40px;
+            background: url(./imges/btn_left.png);
+            position: absolute;
+            z-index: 5;
+        }
+
+        .slick-prev:before{
+            left: -105px;
+            top: -20px;
+        }
+
+        .slick-next:before{
+            background: url(./imges/btn_right.png);
+            position: absolute;
+            right: -105px;
+            top: -20px;
+        }
+
+        .newBookCont::after{
+            content: '';
+            clear: both;
+            display: block;
+        }
+
+/* seoulNews */
+        .seoulNews{
+            width: 100%;
+            margin: 100px 0px;
+            padding: 40px 0px;
+            background-color: #e9e9e9;
+        }
+
+        .title{
+            font-size: 25px;
+            font-weight: 500;
+        }
+
+        .seoulNews .title::after{
+            content: ' + ';
+            font-size: 45px;
+            font-weight: bold;
+            width: 25px;
+            height: 25px;
+            display: inline-block;
+            position: relative;
+            top: 5px;
+            left: 1055px;
+            line-height: 20px;
+            color: #99d3cd;
+            cursor: pointer;
+        }
+
+        .seoulNews ul{
+            margin: 40px 0px 0px 0px;
+        }
+
+        .seoulNews ul::after{
+            content: '';
+            clear: both;
+            display: block;
+        }
+
+        .seoulNews ul li{
+            float: left;
+            width: 32.2%;
+            margin-left: 20px;
+        }
+
+        .seoulNews ul li img{
+            margin: auto;
+        }
+
+        .seoulNews ul li:first-of-type{
+            margin-left: 0px;
+        }
+
+        .seoulNews ul li b{
+            width: 90%;
+            display: block;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+            margin-top: 15px;
+        }
+
+        .seoulNews ul li p{
+            line-height: 130%;
+            color: #969696;
+            margin-top: 10px;
+            width: 85%; 
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+/* questions */
+        .questionsWrap{
+            width: 100%;
+            margin: 100px 0px;
+        }
+
+        .questionsWrap::after{
+            content: '';
+            clear: both;
+            display: block;
+        }
+
+        .questionsWrap .title{
+            text-align: center;
+        }
+
+        .questions{
+            width: 50%;
+            float: left;
+            margin-top: 30px;
+        }
+
+        .questions button{
+            width: 32.5%;
+            height: 150px;
+            background-position: top center;
+            border: none;
+            background-color: transparent;
+            margin: 5px 0px;
+            position: relative;
+            transition: 0.5s;
+        }
+
+        .questions button:hover img{
+            position: relative;
+            top: -20px;
+        }
+
+        .questions button p{
+            font-weight: bold;
+            font-family: 'Noto Sans KR', 'sans-serif';
+            letter-spacing: -0.84px;
+            font-size: 17px;
+            margin-top: 5px;
+            color: #4b4b4b;
+        }
+
+        .map{
+            width: 45%;
+            height: 300px;
+            float: left;
+            margin-top: 50px;
+            border: none;
+            margin-left: 5%;
+        }
+
+        .questions_btnEnr,
+        .questions_btn{
+            width: 160px;
+            height: 50px;
+            background-color: #ebebeb;
+            display: inline-block;
+            text-align: center;
+            line-height: 250%;
+            font-size: 18px;
+            font-weight: bold;
+            margin-left: 35%;
+            margin-top: 30px;
+            border: 2px solid #cfcfcf;
+            box-sizing: border-box;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+
+        .questions_btn{
+            margin-left: 30px;
+        }
+
+        .questions_btnEnr:hover,
+        .questions_btn:hover{
+            background-color: #cfcfcf;
+        }
+
+/* linkBox */
+        .linkBox{
+            width: 100%;
+            margin: 120px 0px;
+        }
+
+        .support,
+        .innovation,
+        .bookstoreFind{
+            width: 27.5%;
+            background-color: #99d3cd;
+            float: left;
+            margin: 0px 60px 0px 0px;
+            position: relative;
+            padding: 30px 0px 50px 30px;
+        }
+
+        .innovation{
+            background-color: #647790;
+        }
+
+         .bookstoreFind:last-of-type{
+            margin-right: 0px;
+        }
+
+        .support b,
+        .innovation b,
+        .bookstoreFind b{
+            font-size: 23px;
+            color: white;
+        }
+
+        .support b::after,
+        .innovation b::after,
+        .bookstoreFind b::after{
+            content: '';
+            width: 70px;
+            height: 70px;
+            position: absolute;
+        }
+
+        .support b::after{
+            background: url(./imges/support.png) no-repeat;
+            top: 15px;
+            right: 20px;
+            background-position: center;
+        }
+
+        .innovation b::after{
+            background: url(./imges/innovation.png) no-repeat;
+            top: 15px;
+            right: 20px;
+            background-position: center;
+        }
+
+        .bookstoreFind b::after{
+            background: url(./imges/bookstoreFind.png) no-repeat;
+            top: 15px;
+            right: 20px;
+            background-position: center;
+        }
+
+        .support p,.innovation p,.bookstoreFind p{
+            line-height: 140%;
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: normal;
+            color: white;
+            letter-spacing: -0.84px;
+        }
+
+        .support .more,
+        .innovation .more,
+        .bookstoreFind .more{
+            margin: 50px 0px 0px 15px;
+            font-size: 18px;
+            color: white;
+            font-weight: normal;
+            letter-spacing: -0.84px;
+            margin-top: 50px;
+            display: block;
+        }
+
+        .more::after{
+            content: '';
+            width: 160px;
+            height: 24px;
+            position: absolute;
+            background-color: red;
+            background: url(./imges/moreArrow.png) no-repeat;
+            top: 195px;
+            left: 20px;
+        }
+
+/* shortcutsBar */
+        .shortcutsBar{
+            width: 100%;
+            background-color: #e9e9e9;
+            margin: 100px 0px;
+            padding: 30px 0px;
+        }
+
+        .shortcutsBar ul{
+            width: 100%;
+            display: table;
+            table-layout: fixed;
+        }
+
+        .shortcutsBar ul li{
+            position: relative;
+            font-size: 18px;
+            letter-spacing: -0.84px;
+            font-weight: 500;
+            border-left: 2px solid #cecece;
+            box-sizing: border-box;
+            float: left;
+            display: table-cell;
+            vertical-align: middle;
+            width: 25%;
+            
+        }
+
+        .shortcutsBar ul li:last-of-type{
+            border-right: 2px solid #cecece;
+        }
+
+        .shortcutsBar ul li::after{
+            content: '';
+            clear: both;
+            display: block;
+        }
+        
+        .shortcutsBar ul li span{
+            float: left;
+            width: 50px;
+            height: 50px;
+            margin-left: 60px;
+        }
+
+        .shortcutsBar ul li p{
+            float: left;
+            margin-top: 10px;
+            margin-left: 10px;
+        }
+
+        
+
+        .getDirections{
+            background: url(./imges/shortcutsBar_01.png);
+        }
+
+        .callNumber{
+            background: url(./imges/shortcutsBar_02.png);
+        }
+
+        .shortcutsBar .collaboration{
+            background: url(./imges/shortcutsBar_03.png);
+            margin-left: 40px;
+        }
+
+        .evaluation{
+            background: url(./imges/shortcutsBar_04.png);
+        }
+
+
+    </style>
+    <script src="./js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="http://kenwheeler.github.io/slick/slick/slick.min.js"></script>
+    <script>
+        // $(function(){
+        //     setInterval(slide,3000);
+            
+        //     function slide(){
+        //         $('.slideImg ul').stop().animate({marginTop:-600},1000,slideNext);
+        //     }
+            
+        //     function slideNext(){
+        //         $('.slideImg ul li').eq(0).appendTo('.slideImg ul')
+        //         $('.slideImg ul').stop().animate({marginTop:0},0);
+        //     }
+        // }) // 메인슬라이드
+            
+        // $(function(){
+        //     $('.lnb li').mouseover(function(){
+        //         $('.subM').stop().slideDown(300);
+        //         $('.navBg').stop().slideDown(250);
+        //     }).mouseout(function(){
+        //         $('.subM').stop().slideUp(300);
+        //         $('.navBg').stop().slideUp(300);
+        //     })
+        // }); // 메뉴
+
+        // $(function(){
+        //     setInterval(slide,3000);
+            
+        //     function slide(){
+        //         $('.notice_left ul').stop().animate({marginTop:-20},1000,slideNext);
+        //     }
+            
+        //     function slideNext(){
+        //         $('.notice_left ul li').eq(0).appendTo('.notice_left ul')
+        //         $('.notice_left ul').stop().animate({marginTop:0},0);
+        //     }
+        // }) // 공지사항슬라이드
+
+        $(document).ready(function () {
+            $('.regular').slick({
+                dots: true,
+                infinite: true,
+                slidesToShow: 4, // 몇개 보이게 할건지
+                slidesToScroll: 4 // 몇개씩 넘어가게 할건지
+                });
+        }); // 책 슬라이드
+
+    </script>
+</head>
+<body>
+    <div id="wrap">
+        <header>
+            <div class="contLayout">
+                <a href="#" class="logo">서울도서관</a>
+                <nav>
+                    <ul class="lnb">
+                        <li><a href="#">자료검색</a>
+                            <ul class="subM">
+                                <li><a href="#">소장자료 검색</a></li>
+                                <li><a href="#">DVD 검색</a></li>
+                                <li><a href="#">연속간행물 검색</a></li>
+                                <li><a href="#">서울자료</a></li>
+                                <li><a href="#">자료탐색</a></li>
+                                <li><a href="#">스마트 도서관 검색</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">전자도서관</a>
+                            <ul class="subM">
+                                <li><a href="#">전자책 오디오북</a></li>
+                                <li><a href="#">전자잡지</a></li>
+                                <li><a href="#">구독학술 DB</a></li>
+                                <li><a href="#">협력기관 DB</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">도서관이용</a>
+                            <ul class="subM">
+                                <li><a href="#">이용안내</a></li>
+                                <li><a href="#">자료실 안내</a></li>
+                                <li><a href="#">전시 프로그램 공간</a></li>
+                                <li><a href="#">함께하는 서비스</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">신청·참여</a>
+                            <ul class="subM">
+                                <li><a href="#">희망도서 신청</a></li>
+                                <li><a href="#">강좌 신청</a></li>
+                                <li><a href="#">분실물 찾기</a></li>
+                                <li><a href="#">단체방문 신청</a></li>
+                                <li><a href="#">자원봉사 신청</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">도서관소개</a>
+                            <ul class="subM">
+                                <li><a href="#">인삿말</a></li>
+                                <li><a href="#">로고</a></li>
+                                <li><a href="#">운영규정</a></li>
+                                <li><a href="#">일정 및 행사</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="gnb">
+                        <li><a href="#">로그인</a></li>
+                        <li><a href="#">회원가입</a></li>
+                        <li><a href="#">나의공간</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <div class="navBg"></div>
+        <section>
+            <div class="slideImg">
+                <ul>
+                    <li><img src="./imges/slideImg_01.jpg" alt="메인이미지"></li>
+                    <li><img src="./imges/slideImg_02.jpg" alt="메인이미지"></li>
+                    <li><img src="./imges/slideImg_03.jpg" alt="메인이미지"></li>
+                </ul>
+            </div>
+            <div class="notice">
+                <div class="contLayout">
+                    <div class="notice_left">
+                        <div>
+                            <b>공지사항</b>
+                            <ul>
+                                <li><a href="#">2021학년도 대학수학능력 시험일 11.18 &#40;목&#41; 10시 개관</a></li>
+                                <li><a href="#">하이하이 두번째 공지사항 등장 'ㅁ' 말이 많아서 말줄임표를 사용해야하지</a></li>
+                                <li><a href="#">주목 나는 세번쨰 공지사항 'ㅅ'a </a></li>
+                            </ul>
+                            <span class="notice_more"></span>
+                        </div>
+                    </div>
+                    <div class="notice_right">
+                        <b>자치구도서관 공지 </b>
+                        <ul>
+                            <li><a href="#">&#91;서강도서관&#93;11월/팟캐스트 서강도서관 피셜x책읽는 마포 한 책 읽기 17회 '여행의 이유'</a></li>
+                            <li><a href="#">&#91;강남구립못골도서관&#93; 비대면 재활교육 part3.언어치료</a></li>
+                        </ul>
+                        <span class="notice_more"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="shortcutsWrap">
+                <div class="contLayout">
+                    <ul class="shortcuts">
+                        <li>
+                            <img src="./imges/shortcutsIcon_01.png" alt="전자책 오디오북">
+                            <b>전자책·오디오북</b>
+                            <p>국내/국외 전자책 <br> 오디오북 제공</p>
+                        </li>
+                        <li>
+                            <img src="./imges/shortcutsIcon_02.png" alt="회원증 발급">
+                            <b>회원증 발급</b>
+                            <p>서울시에 주민등록이<br>되어 있는 자</p>
+                        </li>
+                        <li>
+                            <img src="./imges/shortcutsIcon_03.png" alt="희망도서 신청">
+                            <b>희망도서 신청</b>
+                            <p>1인당 월 3권, <br> 1년 15권으로 제한</p>
+                        </li>
+                        <li>
+                            <img src="./imges/shortcutsIcon_04.png" alt="이용문의">
+                            <b>이용문의</b>
+                            <p>귀 귀울여 듣는 <br>서울도서관</p>
+                        </li>
+                        <li>
+                            <img src="./imges/shortcutsIcon_05.png" alt="스마트 도서관">
+                            <b>스마트 도서관</b>
+                            <p>365일 이용 가능한<br>무인 도서관</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="contLayout">
+                <div class="bookRanking">
+                    <input type="radio" name="bookRanking" id="newbook" checked>
+                    <input type="radio" name="bookRanking" id="loanbook">
+                    <label for="newbook" class="newbook">새로 들어온 책</label>
+                    <label for="loanbook" class="loanbook">대출이 많은 책</label>
+                    <div class="newBookCont">
+                        <ul class="regular">
+                            <li>
+                                <a href="#"><img src="./imges/newbook01.jpg" alt="힐링되는 트레킹과 산행"></a>
+                            </li>
+                            <li>
+                                <a href="#"><img src="./imges/newbook02.jpg" alt="후백제와 견훤"></a>
+                            </li>
+                            <li>
+                                <a href="#"><img src="./imges/newbook03.jpg" alt="홀로 치앙마이 한달살기"></a>
+                            </li>
+                            <li>
+                                <a href="#"><img src="./imges/newbook04.jpg" alt="우리 설화"></a>
+                            </li>
+                            <li>
+                                <a href="#"><img src="./imges/newbook09.jpg" alt="홈스, 고대사 비밀을 밝히다"></a>
+                            </li>
+                            <li>
+                                <a href="#"><img src="./imges/newbook06.jpg" alt="홈스, 고대사 비밀을 밝히다"></a>
+                            </li>
+                            <li>
+                                <a href="#"><img src="./imges/newbook07.jpg" alt="홈스, 고대사 비밀을 밝히다"></a>
+                            </li>
+                            <li>
+                                <a href="#"><img src="./imges/newbook08.jpg" alt="홈스, 고대사 비밀을 밝히다"></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="loanBookCont">
+                        <ul class="regular">
+                            <li>
+                            <a href="#"><img src="./imges/loanbook01.jpg" alt="힐링되는 트레킹과 산행"></a>
+                            </li>
+                            <li>
+                            <a href="#"><img src="./imges/loanbook02.jpg" alt="후백제와 견훤"></a>
+                            </li>
+                            <li>
+                            <a href="#"><img src="./imges/loanbook03.jpg" alt="홀로 치앙마이 한달살기"></a>
+                            </li>
+                            <li>
+                            <a href="#"><img src="./imges/loanbook05.jpg" alt="우리 설화"></a>
+                            </li>
+                            <li>
+                            <a href="#"><img src="./imges/loanbook10.jpg" alt="홈스, 고대사 비밀을 밝히다"></a>
+                            </li>
+                            <li>
+                            <a href="#"><img src="./imges/loanbook09.jpg" alt="홈스, 고대사 비밀을 밝히다"></a>
+                            </li>
+                            <li>
+                            <a href="#"><img src="./imges/loanbook08.jpg" alt="홈스, 고대사 비밀을 밝히다"></a>
+                            </li>
+                            <li>
+                            <a href="#"><img src="./imges/loanbook07.jpg" alt="홈스, 고대사 비밀을 밝히다"></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="seoulNews">
+                <div class="contLayout">
+                    <p class="title">I SEOUL U</p>
+                    <ul>
+                        <li>
+                            <a href="#">
+                                <img src="./imges/notice02.jpg" alt="서울 동네 책방 활성화 설문조사 이벤트">
+                                <b>서울 동네 책방 활성화 설문조사 이벤트</b>
+                                <p>
+                                    서울특별시 서울도서관은 서점이 지역의 문화공간 <br>
+                                    으로서 역할을 지속적으로 수행할 수 있도록 책방 활성화 사업을 추진하고 있습니다. 
+                                </p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="./imges/notice01.jpg" alt="문화체육관광부 장관표">
+                                <b>서울시, '전국도서관 운영평가' 문화체육관광부 장관표창 2개 부문 수상</b>
+                                <p>
+                                    코로나 19 속에서도 시민서비를 통해 일궈낸 <br>
+                                    도서관 서비스 성과 
+                                </p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="./imges/notice03.jpg" alt="서울의 2022년 올해의 책">
+                                <b>[이벤트] 서울의 2022년 올해의 책을 추천해주세요.</b>
+                                <p>
+                                    2022년 서울의 한 도서관 한 책 읽기는  <br>
+                                    서울 한 주제로 함께 읽기로 새롭게 시작합니다.
+                                </p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="questionsWrap">
+            <div class="contLayout">
+                <p class="title">자주 찾는 질문</p>
+                <div class="questions">
+                    <button class="member">
+                        <a href="#">
+                            <img src="./imges/shortcutsIcon_02.png" alt="회원 정보 / 회원증">
+                            <p>회원 정보 / 회원증</p>
+                        </a>
+                    </button>
+                    <button class="magazine">
+                        <a href="#">
+                            <img src="./imges/oftenQ_01.png" alt="전자잡지 이용방법">
+                            <p>전자잡지 이용방법</p>
+                        </a>
+                    </button>
+                    <button class="ebook">
+                        <a href="#">
+                            <img src="./imges/shortcutsIcon_01.png" alt="전자책 이용방법">
+                            <p>전자책 이용방법</p>
+                        </a>
+                    </button>
+                    <button class="login">
+                        <a href="#">
+                            <img src="./imges/oftenQ_04.png" alt="기기별 로그인">
+                            <p>기기별 로그인</p>
+                        </a>
+                    </button>
+                    <button class="return">
+                        <a href="#">
+                            <img src="./imges/oftenQ_05.png" alt="대리 반납 / 대출">
+                            <p>대리 반납 / 대출</p>
+                        </a>
+                    </button>
+                    <button class="error">
+                        <a href="#">
+                            <img src="./imges/oftenQ_06.png" alt="반납 / 대출 오류">
+                            <p>반납 / 대출 오류</p>
+                        </a>
+                    </button>
+                </div>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12650.099942295548!2d126.9779023!3d37.5662538!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xa1b342929c4253d3!2z7ISc7Jq464-E7ISc6rSA!5e0!3m2!1sko!2skr!4v1638159965499!5m2!1sko!2skr" loading="lazy" class="map"></iframe>
+                <a href="#" class="questions_btnEnr">질문등록</a>
+                <a href="#" class="questions_btn">질문등록</a>
+                </div>
+            </div>
+            <div class="linkBox">
+                <div class="contLayout">
+                    <div class="support">
+                        <b>안읽는 책 후원하기</b>
+                        <p>독서를 통해 세상을 배워갈 수 <br> 있도록 지원해주세요.</p>
+                        <a href="#" class="more">자세히 보기</a>
+                    </div>
+                    <div class="innovation">
+                        <b>디지털 사회 혁신센터</b>
+                        <p>디지털 기술과 사회를 잇는 <br>중심축입니다.</p>
+                        <a href="#" class="more">자세히 보기</a>
+                    </div>
+                    <div class="bookstoreFind">
+                        <b>서울의 책방 찾기</b>
+                        <p>서울 시내 구석구석 숨어있는 <br> 500여개 책방을 찾아드립니다.</p>
+                        <a href="#" class="more">자세히 보기</a>
+                    </div>
+                </div>
+            </div>
+            <div class="shortcutsBar">
+                <div class="contLayout">
+                    <ul>
+                        <li>
+                            <a href="#">
+                                <span class="getDirections"></span>
+                                <p>찾아오시는 길</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="callNumber"></span>
+                                <p>도서관 전화번호</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="collaboration"></span>
+                                <p>서울도서관 x 동네책방</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="evaluation"></span>
+                                <p>도서관 운영평가</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
