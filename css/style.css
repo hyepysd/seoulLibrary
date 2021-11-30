@@ -716,8 +716,13 @@
             position: absolute;
             background-color: red;
             background: url(../imges/moreArrow.png) no-repeat;
-            top: 195px;
+            top: 200px;
             left: 20px;
+        }
+
+        .linkBox div div:hover .more::after{
+            margin-left: 20px;
+            transition-duration: 0.2s;
         }
 
 /* shortcutsBar */
