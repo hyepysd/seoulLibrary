@@ -4,12 +4,6 @@
         body{font-family: 'Noto Sans KR', sans-serif; color: #333;}
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
         
-        .contLayout::after{
-            content: '';
-            clear: both;
-            display: block;
-        }
-
         #wrap{
             width: 100%;
         }
@@ -28,6 +22,12 @@
         .contLayout{
             width: 1200px;
             margin: auto;
+        }
+
+        .contLayout::after{
+            content: '';
+            clear: both;
+            display: block;
         }
 
         .logo{
@@ -50,8 +50,25 @@
             float: left;
             margin: 29px 0px 0px 0px;
             width: 163px;
+            position: relative;
         }
         
+        .lnb>li::after{
+            content: '';
+            background-color: #99d3cd62;
+            width: 120px;
+            height: 20px;
+            border-radius: 10px;
+            position: absolute;
+            top: 32px;
+            left: 20px;
+            z-index: 9;
+            display: none;
+        }
+
+        .lnb li:hover::after{
+            display: block;
+        }
 
         .lnb>li>a{
             display: block;
@@ -60,6 +77,8 @@
             font-weight: bold;
             letter-spacing: -0.84px;
             padding: 20px 0px;
+            z-index: 55;
+            position: relative;
         }
 
         .gnb li{
@@ -68,41 +87,31 @@
             text-align: center;
             margin-top: 10px;
         }
-        /* 
-        .lnb>li:hover .lnb>li::after{
-            content: '';
-            background-color: red;
-            width: 163px;
-            height: 5px;
-            display: inline-block;
-        }
-
-        .subM>li:hover .subM>li>a{
-            position: relative;
-            left: 10px;
-            color: red;
-        } */
 
         .gnb li a{
             font-size: 15px;
         }
 
         .subM{
+            width: 100%;
+            height: 267px;
             position: absolute;
             z-index: 2;
+            top: 69px;
             display: none;
-            top: 85px;
         }
 
         .subM>li{
-            padding: 7px 0px;
             width: 163px;
         }
 
-        .subM>li:first-of-type{
-            padding-top: 30px;
+        .lnb li:hover .subM{
+            background-color: #586a81;
         }
 
+        .subM>li:first-of-type{
+            padding-top: 10px;
+        }
 
         .subM>li a{
             font-size: 18px;
@@ -111,6 +120,7 @@
             text-align: center;
             letter-spacing: -0.84px;
             color: white;
+            padding: 8px 0px;
         }
         
         .navBg{
@@ -121,15 +131,49 @@
             top: 98px;
             left: 50%;
             transform: translateX(-50%);
-            display: none;
             z-index: 1;
+            display: none;
         }
 
 /* slideImg */
+        .search{
+            position: absolute;
+            top: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40%;
+            padding: 25px 40px;
+            font-size: 23px;
+            font-weight: normal;
+            border-radius: 60px;
+            border: 2px solid #ccc;
+            font-family: 'Noto Sans KR', sans-serif;
+            box-shadow: 5px 5px 5px 0px rgba(75, 75, 75, 0.507);   
+        }
+
+        .search::placeholder{
+            color: #d0d0d0;
+        }
+        
+        .slideImg .searchIcon{
+            width: 45px;
+            height: 45px;
+            background: url(../imges/searchIcon.png);
+            position: absolute;
+            top: 125px;
+            left: 67%;
+            font-size: 0px;
+        }
+
+        .search:focus{
+            outline: none;
+        }
+
         .slideImg{
            width: 100%;
            height: 600px;
            overflow: hidden;
+           position: relative;
         }
 
         .slideImg li{
@@ -564,7 +608,7 @@
             font-size: 18px;
             font-weight: bold;
             margin-left: 35%;
-            margin-top: 30px;
+            margin-top: 50px;
             border: 2px solid #cfcfcf;
             box-sizing: border-box;
             border-radius: 10px;
