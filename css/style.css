@@ -123,6 +123,11 @@
             padding: 8px 0px;
         }
         
+        .subM>li a:hover{
+            margin-left: 15px;
+            transition-duration: 0.2s;
+        }
+
         .navBg{
             width: 1200px;
             height: 267px;
@@ -352,7 +357,6 @@
             display: inline-block;
             font-size: 20px;
             font-weight: 500;
-            transition: 0.5s;
             color: #ccc;
         }
 
@@ -570,13 +574,12 @@
             border: none;
             background-color: transparent;
             margin: 5px 0px;
-            position: relative;
-            transition: 0.5s;
         }
 
         .questions button:hover img{
             position: relative;
             top: -20px;
+            transition-duration: 0.2s;
         }
 
         .questions button p{
@@ -612,7 +615,6 @@
             border: 2px solid #cfcfcf;
             box-sizing: border-box;
             border-radius: 10px;
-            transition: 0.3s;
         }
 
         .questions_btn{
