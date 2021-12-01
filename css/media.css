@@ -1,0 +1,18 @@
+@media screen and (max-width : 420px) {
+           
+    header{
+        height: 75px;
+        background-color: red;
+        width: 100%;
+    }
+
+    .logo{
+        background: url(../Mimges/Mlogo.png) no-repeat;
+    }
+
+
+    section,footer,
+    nav{
+        display: none;
+    }
+}
