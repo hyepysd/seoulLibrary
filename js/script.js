@@ -45,3 +45,17 @@ $(document).ready(function () {
         slidesToScroll: 4 // 몇개씩 넘어가게 할건지
         });
 }); // 책 슬라이드
+
+// 모바일
+$(function(){
+    setInterval(slide,1000);
+            
+    function slide(){
+        $('.M_slideImg ul').stop().animate({marginLeft: -410},1000,slideNext);
+    }
+    
+    function slideNext(){
+        $('.M_slideImg ul li').eq(0).appendTo('.M_slideImg ul');
+        $('.M_slideImg ul').stop().animate({marginLeft:0},0);
+    }
+}) // 메인슬라이드

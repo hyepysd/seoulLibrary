@@ -1,28 +1,87 @@
-@media screen and (max-width : 420px) {
+@media screen and (max-width : 420px){
     body{
-        overflow-x: hidden;
+        width: 100%;
+        background-color: rgb(207, 207, 207);
     }
 
-    .contLayout{
-        max-width: 420em;
+    #wrap, .contLayout{
+        max-width: 420px;
+        margin: auto;
+        background-color: wheat;
+    }
+
+    .contLayout::after{
+        content: '';
+        clear: both;
+        display: block;
     }
     
-    header{
+    #wrap header .contLayout{
         background-color: red;
-        padding: 5px 25px;
+        width: 90%;
     }
 
-    .logo{
+    header .logo{
         background: url(../Mimges/Mlogo.png) no-repeat;
         background-size: contain;
         background-position: center;
         width: 150px;
         height: 50px;
         margin-top: 0px;
+        float: left;
+    }
+
+    .M_menu{
+        width: 30px;
+        float: right;
+        margin: 12px;
+    }
+
+    .M_menu div{
+        width: 100%;
+        height: 5px;
+        background-color: #506580;
+        margin: 0px 0px 6px 0px;
+    }
+
+    .M_menu div:last-child{
+        margin: 0px;
     }
 
 
-    section,footer,
+/* section */
+    .M_slideImg{
+        width: 100%;
+        height: 265px;
+        display: block;
+        overflow: hidden;
+    }
+
+     .M_slideImg .contLayout{
+        width: 250%;
+    }
+
+    .M_slideImg li{
+        float: left;
+    }
+
+    .M_slideImg .contLayout li img{
+        width: 100%;
+    }
+
+
+
+
+
+    .slideImg,
+    .notice,
+    .bookRanking,
+    .shortcutsWrap,
+    .seoulNews,
+    .questionsWrap,
+    .linkBox,
+    .shortcutsBar,
+    footer,
     nav{
         display: none;
     }
