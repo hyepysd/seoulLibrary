@@ -1,6 +1,11 @@
 @media screen and (max-width : 420px) {
+    body{
+        overflow-x: hidden;
+    }
+
     .contLayout{
         max-width: 420px;
+        overflow-x: hidden;
     }
     
     header{
