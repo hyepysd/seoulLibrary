@@ -4,8 +4,7 @@
     }
 
     .contLayout{
-        max-width: 420px;
-        overflow-x: hidden;
+        max-width: 420em;
     }
     
     header{
